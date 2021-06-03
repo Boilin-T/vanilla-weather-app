@@ -15,31 +15,38 @@
   </head>
   <body>
     <div class="container">
-      <h1>New York, NY USA</h1>
-      <h2>Thursday 17:34</h2>
-      <h2>Mostly Cloudy</h2>
-      <div class="row">
-        <div class="col-6">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-            alt="light-clouds"
-          />
-          27ºC|ºF
-        </div>
-        <div class="col-6">
-          <ul>
-            <li>Precipitation: 0%</li>
-            <li>Humidity: 37%</li>
-            <li>Wind: 13kmh</li>
-          </ul>
+      <div class="weather-app-wrapper"></div>
+      <div class="weather-app">
+        <h1>New York, NY USA</h1>
+        <h2>Thursday 17:34</h2>
+        <h2>Mostly Cloudy</h2>
+        <div class="row">
+          <div class="col-6 temperature">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              alt="light-clouds"
+            />
+            <scan class="temp">27</scan>
+            <scan class="degrees">ºC|
+            <a href="#">ºF</a>
+            </scan>
+          </div>
+          <div class="col-6">
+            <ul class="attributes">
+              <li>Precipitation: 0%</li>
+              <li>Humidity: 37%</li>
+              <li>Wind: 13kmh</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <small>
-        <a href="https://github.com/Boilin-T/vanilla-weather-app"
-          >Open-source code</a
-        >
-        by Linda C.
-      </small>
+        <small>
+          <a href="https://github.com/Boilin-T/vanilla-weather-app"
+            >Open-source code</a
+          >
+          by Linda C.
+        </small>
+      </div>
     </div>
     <script src="src/app.js"></script>
   </body>
