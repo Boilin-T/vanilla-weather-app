@@ -28,6 +28,10 @@ h2::first-letter {
   border-radius: 5px;
 }
 
+#search-form {
+  margin-bottom: 15px;
+}
+
 .temperature img {
   height: 70px;
   width: 70px;

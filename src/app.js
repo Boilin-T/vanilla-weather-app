@@ -41,12 +41,23 @@ function displayTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  
 }
 
-let apiKey = "7cc7a1eacfc053e2fe7ef8d9cb7298e3";
-let units = "metric";
-let city = prompt("Enter a city");
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  search(cityInput.value);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function search(city) {
+  let apiKey = "7cc7a1eacfc053e2fe7ef8d9cb7298e3";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+search("Leipzig");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
