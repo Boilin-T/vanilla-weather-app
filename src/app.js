@@ -23,13 +23,13 @@ function formatDate(timestamp) {
 }
 
 function displayTemperature(response) {
-  console.log(response);
   let tempElement = document.querySelector("#temp");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let descriptionElement = document.querySelector("#description");
   let dateElement = document.querySelector("#date");
   let cityElement = document.querySelector("#city");
+  let iconElement = document.querySelector("#icon");
 
   tempElement.innerHTML = Math.round(response.data.main.temp);
   humidityElement.innerHTML = Math.round(response.data.main.temp);
@@ -37,7 +37,11 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   cityElement.innerHTML = response.data.name;
-  console.log(new Date(response.data.dt * 1000));
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  
 }
 
 let apiKey = "7cc7a1eacfc053e2fe7ef8d9cb7298e3";
