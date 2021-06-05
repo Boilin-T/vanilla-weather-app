@@ -23,25 +23,30 @@ function formatDate(timestamp) {
 }
 
 function displayTemperature(response) {
-  let tempElement = document.querySelector("#temp");
-  let humidityElement = document.querySelector("#humidity");
-  let windElement = document.querySelector("#wind");
-  let descriptionElement = document.querySelector("#description");
-  let dateElement = document.querySelector("#date");
-  let cityElement = document.querySelector("#city");
-  let iconElement = document.querySelector("#icon");
+  document.querySelector("#temp").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#humidity").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description;
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
+  document.querySelector("#city").innerHTML = response.data.name;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 
   celsiusTemperature = response.data.main.temp;
-  tempElement.innerHTML = Math.round(response.data.main.temp);
-  humidityElement.innerHTML = Math.round(response.data.main.temp);
-  windElement.innerHTML = Math.round(response.data.wind.speed);
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  cityElement.innerHTML = response.data.name;
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
+
 }
 
 function handleSubmit(event) {
@@ -75,8 +80,6 @@ function displayCelsius(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-search("Leipzig");
-
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
@@ -87,3 +90,5 @@ fahrenheitTemp.addEventListener("click", displayFahrenheit);
 
 let celsiusTemp = document.querySelector("#celsius-temp");
 celsiusTemp.addEventListener("click", displayCelsius);
+
+search("Leipzig");
