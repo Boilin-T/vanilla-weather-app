@@ -49,6 +49,16 @@ h2::first-letter {
   top: -10px;
 }
 
+.temperature .active {
+  color: #70757a;
+  cursor: default;
+  text-decoration: none;
+}
+
+.temperature .active:hover {
+  text-decoration: none;
+}
+
 .attributes {
   list-style: none;
   color: #70757a;

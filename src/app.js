@@ -31,6 +31,7 @@ function displayTemperature(response) {
   let cityElement = document.querySelector("#city");
   let iconElement = document.querySelector("#icon");
 
+  celsiusTemperature = response.data.main.temp;
   tempElement.innerHTML = Math.round(response.data.main.temp);
   humidityElement.innerHTML = Math.round(response.data.main.temp);
   windElement.innerHTML = Math.round(response.data.wind.speed);
@@ -57,7 +58,32 @@ function search(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
+function displayFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  celsiusTemp.classList.remove("active");
+  fahrenheitTemp.classList.add("active");
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = fahrenheitTemperature;
+}
+
+function displayCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  celsiusTemp.classList.add("active");
+  fahrenheitTemp.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 search("Leipzig");
+
+let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitTemp = document.querySelector("#fahrenheit-temp");
+fahrenheitTemp.addEventListener("click", displayFahrenheit);
+
+let celsiusTemp = document.querySelector("#celsius-temp");
+celsiusTemp.addEventListener("click", displayCelsius);
