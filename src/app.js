@@ -47,6 +47,7 @@ function displayTemperature(response) {
 
   celsiusTemperature = response.data.main.temp;
 
+  displayForecast();
 }
 
 function handleSubmit(event) {
@@ -78,6 +79,36 @@ function displayCelsius(event) {
   celsiusTemp.classList.add("active");
   fahrenheitTemp.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  let days = ["Thurs", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `       <div class="col-2">
+                <div class="forecast-day">${day}</div>
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  alt=""
+                  id="forecast-icon"
+                />
+                <div class="forecast-temp">
+                  <scan class="forecast-temp-max">18</scan>º |
+                  <scan class="forecast-temp-min">12</scan>º
+                </div>
+              </div>
+            
+`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
 }
 
 let celsiusTemperature = null;

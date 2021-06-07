@@ -64,3 +64,18 @@ h2::first-letter {
   color: #70757a;
   margin-top: 20px;
 }
+
+.weather-forecast {
+  padding-top: 20px;
+  text-align: center;
+  color: black;
+}
+
+.forecast-temp-min {
+  opacity: 0.5;
+}
+
+#forecast-icon {
+  height: 40px;
+  width: 40px;
+}
